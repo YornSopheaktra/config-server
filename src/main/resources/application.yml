@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: jdbc
+  #datasource:
+  #  url: jdbc:postgresql://localhost:5432/config_server
+  #  username: postgres
+  #  password: 123
+  #jpa:
+  #  properties:
+  #    hibernate:
+  #      dialect: org.hibernate.dialect.PostgreSQLDialect
+  #  hibernate:
+  #    show-sql: true
+  #    ddl-auto: none
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yml
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+        enable: true
+        auto-registration: true
+        instance:
+          name: config-server
+
+  cloud:
+    config:
+      server:
+        bootstrap: true
+        jdbc:
+          sql: SELECT KEY, VALUE FROM APPLICATION_PROPERTIES WHERE (APP_NAME =? OR APP_NAME = 'GLOBAL') AND PROFILE =? AND LABEL =? AND STATUS ='ACTIVE'
+          order: 1
+server:
+  port: 8888
+  servlet:
+    context-path: /config-server
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false
