@@ -67,6 +67,6 @@ public class ApplicationPropertiesServiceImpl implements ApplicationPropertiesSe
 
     @Override
     public ApplicationPropertiesResponse getProperties(Status status, String appName, String profile, String label) {
-        return ApplicationPropertiesResponse.fromEntities(propertiesRepo.findAllByStatus(Status.ACTIVE));
+        return ApplicationPropertiesResponse.fromEntities(propertiesRepo.findAllByAppNameAndProfileAndLabelAndStatus(appName, profile, label, status));
     }
 }

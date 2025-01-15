@@ -10,5 +10,5 @@ public interface ApplicationPropertiesRepo extends JpaRepository<ApplicationProp
 
     List<ApplicationProperties> findAllByAppNameAndProfileAndLabel(String appName, String profile, String label);
     List<ApplicationProperties> findAllByStatus(Status status);
-    //List<ApplicationProperties> findAllByAppNameAndProfileAndLabelAndStatus(String appName, String profile, String label, Status status);
+    List<ApplicationProperties> findAllByAppNameAndProfileAndLabelAndStatus(String appName, String profile, String label, Status status);
 }
