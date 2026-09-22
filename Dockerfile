@@ -1,4 +1,6 @@
-FROM openjdk:22-ea-21-jdk-bookworm
+FROM eclipse-temurin:21-jre
+
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
-# ENTRYPOINT ["java","-Dspring.profiles.active=env","-jar","/app.jar"]
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]

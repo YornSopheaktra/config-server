@@ -20,8 +20,8 @@ spring:
     admin:
       client:
         url: http://localhost:8080
-        enable: true
-        auto-registration: true
+        enable: false
+        auto-registration: false
         instance:
           name: config-server
 
