@@ -30,7 +30,7 @@ spring:
       server:
         bootstrap: true
         jdbc:
-          sql: SELECT KEY, VALUE FROM APPLICATION_PROPERTIES WHERE (APP_NAME =? OR APP_NAME = 'GLOBAL') AND PROFILE =? AND LABEL =? AND STATUS ='ACTIVE'
+          sql: SELECT "KEY", "VALUE" FROM APPLICATION_PROPERTIES WHERE (APP_NAME =? OR APP_NAME = 'GLOBAL') AND PROFILE =? AND LABEL =? AND STATUS ='ACTIVE'
           order: 1
 server:
   port: 8888
